@@ -1,0 +1,16 @@
+/* Make modal content scrollable */
+.modal-content {
+    max-height: 80vh; /* Limit height to viewport */
+    overflow-y: auto; /* Enable vertical scroll */
+    padding: 1.5rem;  /* Optional padding */
+}
+
+/* Optional: smooth scrolling inside modal */
+.modal-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 3px;
+}

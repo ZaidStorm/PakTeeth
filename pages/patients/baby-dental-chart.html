@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby Teeth Chart | PakTeeth</title>
+    <link rel="icon" type="image/png" href="../../assets/images/tooth.png">
+    <link rel="stylesheet" href="../../css/baby-dental-chart.css">
+    <link rel="stylesheet" href="../../css/modals.css">
+</head>
+
+<body>
+    <div class="app-container">
+
+        <div class="app-container">
+            <!-- Main Content -->
+            <nav class="top-nav" id="appTopNav">
+                <a href="../dashboard/dashboard.html" class="nav-brand">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide-tooth">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                        <circle cx="12" cy="9" r="3" />
+                    </svg>
+                    PakTeeth
+                </a>
+                <div class="nav-menu">
+                    <a href="../dashboard/dashboard.html" class="nav-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="7" height="9" x="3" y="3" rx="1" />
+                            <rect width="7" height="5" x="14" y="3" rx="1" />
+                            <rect width="7" height="9" x="14" y="12" rx="1" />
+                            <rect width="7" height="5" x="3" y="16" rx="1" />
+                        </svg>
+                        Dashboard
+                    </a>
+                    <a href="../patients/patient-dashboard.html" class="nav-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                        Patients
+                    </a>
+                    <a href="../appointments/appointments.html" class="nav-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="18" height="18" x="3" y="4" rx="2" />
+                            <path d="M16 2v4M8 2v4M3 10h18" />
+                        </svg>
+                        Appointments
+                    </a>
+                    <a href="../doctors/doctors.html" class="nav-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg>
+                        Staff
+                    </a>
+                    <a href="../settings/settings.html" class="nav-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+                        Settings
+                    </a>
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect width="7" height="7" x="3" y="3" rx="1" />
+                                <rect width="7" height="7" x="14" y="3" rx="1" />
+                                <rect width="7" height="7" x="14" y="14" rx="1" />
+                                <rect width="7" height="7" x="3" y="14" rx="1" />
+                            </svg>
+                        </a>
+                        <div class="nav-dropdown-content">
+                            <a href="../analytics/analytics.html" class="nav-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M3 3v18h18" />
+                                    <path d="M18 17V9" />
+                                    <path d="M13 17V5" />
+                                    <path d="M8 17v-3" />
+                                </svg>
+                                Analytics
+                            </a>
+                            <a href="../capital/capital-summary.html" class="nav-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect width="20" height="12" x="2" y="6" rx="2" />
+                                    <circle cx="12" cy="12" r="2" />
+                                    <path d="M6 12h.01" />
+                                    <path d="M18 12h.01" />
+                                </svg>
+                                Capital
+                            </a>
+                            <a href="#" class="nav-item" onclick="APP.logout(); return false;" title="Exit">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                                    <polyline points="16 17 21 12 16 7" />
+                                    <line x1="21" x2="9" y1="12" y2="12" />
+                                </svg>
+                                Exit
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Profile Hero + Tabs -->
+            <section class="page-content">
+                <div id="profileHero" class="profile-hero-container">
+
+                    <div class="profile-hero">
+                        <div class="profile-hero-inner">
+
+                            <div class="profile-avatar-lg" id="heroAvatar">👤</div>
+
+                            <div class="profile-hero-info">
+                                <h1 class="profile-hero-name" id="heroName">Loading...</h1>
+                                <div class="profile-hero-id" id="heroId">Patient ID: ...</div>
+                            </div>
+
+                            <div class="profile-hero-stats" id="heroStats"></div>
+
+                        </div>
+                    </div>
+
+                    <div class="tabs" id="profileTabNav">
+                        <a class="tab" id="tab-overview">Overview</a>
+                        <a class="tab" id="tab-appointments">Appointments</a>
+                        <a class="tab" id="tab-prescriptions">Prescriptions</a>
+                        <a class="tab" id="tab-billing">Billing</a>
+                        <a class="tab" id="tab-reports">Reports</a>
+                        <a class="tab" id="tab-dental">Baby Dental Chart</a>
+                    </div>
+
+                </div>
+
+
+                <!-- WORKSPACE -->
+                <div class="dc-workspace">
+
+                    <!-- LEFT PANEL -->
+                    <div class="dc-chart-panel card">
+
+                        <div class="dc-chart-topbar">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <label class="full-mouth-check">
+                                    <input type="checkbox" id="fullMouthCheck"> Full mouth
+                                </label>
+                                <button class="btn btn-sm btn-secondary"
+                                    onclick="window.location.href='dental-chart.html'+window.location.search">🦷 Switch
+                                    to Adult Chart</button>
+                            </div>
+
+                            <div class="dc-chart-topbar-right">
+                                <span id="babySelectedToothLabel" class="selected-tooth-label">
+                                    No tooth selected
+                                </span>
+                            </div>
+                        </div>
+
+
+                        <!-- BABY FDI CHART -->
+                        <div class="fdi-chart">
+
+                            <div class="jaw-label">Upper</div>
+
+                            <div class="jaw-row upper-jaw-row">
+
+                                <!-- Upper Right -->
+                                <div class="quadrant" id="q1">
+                                    <!-- 55 54 53 52 51 -->
+                                </div>
+
+                                <div class="jaw-midline"></div>
+
+                                <!-- Upper Left -->
+                                <div class="quadrant" id="q2">
+                                    <!-- 61 62 63 64 65 -->
+                                </div>
+
+                            </div>
+
+                            <div class="jaw-gap"></div>
+
+                            <div class="jaw-row lower-jaw-row">
+
+                                <!-- Lower Right -->
+                                <div class="quadrant" id="q4">
+                                    <!-- 85 84 83 82 81 -->
+                                </div>
+
+                                <div class="jaw-midline"></div>
+
+                                <!-- Lower Left -->
+                                <div class="quadrant" id="q3">
+                                    <!-- 71 72 73 74 75 -->
+                                </div>
+
+                            </div>
+
+                            <div class="jaw-label">Lower</div>
+
+                        </div>
+
+
+                        <div class="surface-selector" id="babySurfaceSelector" style="display:none;">
+                            <span class="surface-label">Surface:</span>
+
+                            <div class="surface-btns">
+                                <button class="baby-surface-btn surface-btn" data-s="M">M</button>
+                                <button class="baby-surface-btn surface-btn" data-s="D">D</button>
+                                <button class="baby-surface-btn surface-btn" data-s="B">B</button>
+                                <button class="baby-surface-btn surface-btn" data-s="L">L</button>
+                                <button class="baby-surface-btn surface-btn" data-s="O">O</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!-- RIGHT PANEL -->
+                    <div class="dc-treatment-panel card">
+
+                        <div class="treatment-panel-header">
+                            <span class="treatment-panel-title">Treatment</span>
+
+                            <label class="single-unit-check">
+                                <input type="checkbox" id="singleUnitCheck"> Treat as single unit
+                            </label>
+                        </div>
+
+                        <div class="treatment-tabs">
+                            <button class="treatment-tab-btn active" onclick="switchBabyTreatmentTab('fav')">
+                                ★ Fav
+                            </button>
+
+                            <button class="treatment-tab-btn" onclick="switchBabyTreatmentTab('all')">
+                                ≡ All
+                            </button>
+                        </div>
+
+                        <div class="treatment-grid" id="babyTreatmentGrid">
+                            <div class="treatment-loading">
+                                Loading treatments...
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PROCEDURE TABLE (same as adult) -->
+                <div class="card procedure-history-card" style="margin-top:1.2rem;">
+
+                    <div class="procedure-history-header">
+
+                        <div class="procedure-header-left">
+                            <button class="btn btn-success btn-sm" onclick="savePendingChanges()" id="saveChangesBtn">
+                                💾 Save Changes
+                            </button>
+                        </div>
+
+                        <div class="procedure-header-right">
+                            <button class="btn btn-outline btn-sm" onclick="openProgressNote()">Progress Note</button>
+
+                            <button class="btn btn-outline btn-sm" onclick="toggleHistoryView()">Show All
+                                History</button>
+                        </div>
+
+                    </div>
+
+                    <div class="table-responsive">
+
+                        <table class="data-table procedure-table" id="babyProceduresTable">
+
+                            <thead>
+                                <tr>
+                                    <th style="width:36px;"></th>
+                                    <th>Date</th>
+                                    <th>Teeth</th>
+                                    <th>Diagnosis</th>
+                                    <th>Treatment</th>
+                                    <th>Steps</th>
+                                    <th>Fee</th>
+                                    <th>Discount</th>
+                                    <th>Payable</th>
+                                    <th>Notes</th>
+                                    <th>Doctor</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="proceduresBody">
+                                <tr>
+                                    <td colspan="12" class="empty-state">
+                                        No procedures recorded yet.
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                            <tfoot>
+                                <tr class="billing-totals-row" id="billingTotalsRow">
+                                    <td colspan="5" class="totals-label">Totals</td>
+                                    <td id="totalSteps">—</td>
+                                    <td id="totalFee">0.00</td>
+                                    <td id="totalDiscount">0.00</td>
+                                    <td id="totalPayable">0.00</td>
+                                    <td colspan="3"></td>
+                                </tr>
+                            </tfoot>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+    </div>
+
+    <!-- ====== FEE ENTRY MODAL ====== -->
+    <div id="babyFeeModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 850px;">
+            <div class="modal-header">
+                <h3>Add Baby Procedure</h3>
+                <button class="modal-close" onclick="Modal.close('babyFeeModal')">✖</button>
+            </div>
+            <div class="modal-body" style="max-height:400px; overflow-y:auto;">
+                <div class="fee-modal-info" id="babyFeeModalInfo">
+                    <!-- Populated by JS -->
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Date *</label>
+                        <input type="date" id="babyFeeDate" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Diagnosis</label>
+                        <input type="text" id="babyFeeDiagnosis" class="form-control" placeholder="e.g. Caries">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Surface</label>
+                        <input type="text" id="babyFeeSurface" class="form-control" placeholder="e.g. M, D, O">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Steps</label>
+                        <input type="text" id="babyFeeSteps" class="form-control" value="NA">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Fee (PKR) *</label>
+                        <input type="number" id="babyFeeFee" class="form-control" placeholder="0" min="0"
+                            oninput="babyCalcPayable()">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Discount (PKR)</label>
+                        <input type="number" id="babyFeeDiscount" class="form-control" placeholder="0" value="0" min="0"
+                            oninput="babyCalcPayable()">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Payable</label>
+                    <input type="number" id="babyFeePayable" class="form-control" readonly
+                        style="background:#f0f4ff; font-weight:600; color:#2766ba;">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Clinical Notes</label>
+                    <textarea id="babyFeeClinicalNotes" class="form-control" rows="3"
+                        placeholder="TYPE OF ANESTHESIA: &#10;AMOUNT OF ANESTHESIA: &#10;PROGNOSIS: &#10;POSTOP INSTRUCTIONS AND FOLLOW UP INSTRUCTIONS GIVEN"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="Modal.close('babyFeeModal')">Cancel</button>
+                <button class="btn btn-primary" onclick="babyProceedToDoctor()">✔ Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====== DOCTOR SELECTION MODAL ====== -->
+    <div id="babyDoctorModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 380px;">
+            <div class="modal-header" style="background:#2766ba; color:white; border-radius: 8px 8px 0 0;">
+                <h3>Choose Doctor</h3>
+                <button class="modal-close" onclick="Modal.close('babyDoctorModal')" style="color:white;">✖</button>
+            </div>
+            <div class="modal-body" style="padding: 24px;">
+                <div class="form-group">
+                    <select id="babyDoctorSelect" class="form-control" style="font-size: 15px; padding: 10px;">
+                        <option value="">Select Doctor...</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="Modal.close('babyDoctorModal')">Cancel</button>
+                <button class="btn btn-primary" onclick="babyConfirmSaveProcedure()">✔ Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/core.js"></script>
+    <script src="../../js/patient-profile.js"></script>
+    <script src="../../js/baby-dental-chart.js"></script>
+
+</body>
+
+</html>

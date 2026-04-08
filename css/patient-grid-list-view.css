@@ -1,0 +1,180 @@
+/* patient-grid-list-view.css */
+
+/* ===============================
+   Container Modes
+================================= */
+#patientsContainer.list-mode {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+#patientsContainer.grid-mode {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* ===============================
+   Patient Cards
+================================= */
+.patient-list-item,
+.patient-grid-item {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+/* List View Specific */
+.patient-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 1 calc(33.33% - 15px);
+    box-sizing: border-box;
+}
+
+/* Grid View Specific */
+.patient-grid-item {
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+}
+
+/* ===============================
+   Patient Info
+================================= */
+.patient-info {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.patient-info strong {
+    font-size: 15px;
+    color: #1a1a2e;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Structured meta rows */
+.patient-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-top: 4px;
+}
+
+.meta-row {
+    display: block;
+    font-size: 13px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.meta-label {
+    font-weight: 600;
+    color: #2766ba;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.patient-list-item .patient-info {
+    flex: 1;
+}
+
+.patient-grid-item .patient-info {
+    text-align: center;
+}
+
+.patient-grid-item .patient-meta {
+    align-items: center;
+}
+
+/* ===============================
+   Patient Actions
+================================= */
+.patient-actions {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.patient-actions .btn {
+    font-size: 12px;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+/* Grid view action alignment */
+.patient-grid-item .patient-actions {
+    justify-content: center;
+}
+
+/* ===============================
+   No Results
+================================= */
+.no-results {
+    text-align: center;
+    color: #888;
+    font-size: 16px;
+    padding: 20px 0;
+}
+
+/* ===============================
+   View Toggle Buttons
+================================= */
+.view-toggles {
+    margin-bottom: 15px;
+}
+
+.view-toggles .btn-icon {
+    font-size: 18px;
+    padding: 6px 10px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f5f5f5;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.view-toggles .btn-icon.active,
+.view-toggles .btn-icon:hover {
+    background: #2766ba;
+    color: #fff;
+    border-color: #2766ba;
+}
+
+/* ===============================
+   Responsive
+================================= */
+@media (max-width: 768px) {
+    #patientsContainer.grid-mode {
+        justify-content: center;
+    }
+
+    .patient-grid-item {
+        width: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .patient-grid-item {
+        width: 100%;
+    }
+
+    .patient-list-item {
+        flex-direction: column;
+        align-items: flex-start;
+        flex: 1 1 100%;
+    }
+
+    .patient-actions {
+        justify-content: flex-start;
+    }
+}
