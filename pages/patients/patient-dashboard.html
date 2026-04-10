@@ -169,7 +169,8 @@
                 <!-- Standard Patient Directory View -->
                 <div id="standardPatientsView">
                     <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: stretch;">
-                        <div class="toolbar card" style="flex: 65; margin-bottom: 0; display: flex; align-items: center;">
+                        <div class="toolbar card"
+                            style="flex: 65; margin-bottom: 0; display: flex; align-items: center;">
                             <div style="display: flex; gap: 0.5rem; flex: 1;">
                                 <select id="searchTypePatient" class="form-control" style="width: auto;"
                                     onchange="filterPatients()">
@@ -182,7 +183,8 @@
                                     placeholder="Search by name, ID, phone..." onkeyup="filterPatients()">
                             </div>
                         </div>
-                        <div class="toolbar card" style="flex: 35; margin-bottom: 0; display: flex; justify-content: center; align-items: center;">
+                        <div class="toolbar card"
+                            style="flex: 35; margin-bottom: 0; display: flex; justify-content: center; align-items: center;">
                             <div class="view-toggles" style="margin: 0; display: flex; gap: 0.5rem;">
                                 <button class="btn btn-icon" id="btn-list-view" onclick="setViewMode('list')"
                                     title="List View">📋 List View</button>
@@ -408,7 +410,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title" id="patientModalTitle">Add New Patient</h3>
-                <div id="patientModalSubtitle" style="font-size: 0.85rem; color: var(--text-muted, #666); margin-top: 2px; display: none;"></div>
+                <div id="patientModalSubtitle"
+                    style="font-size: 0.85rem; color: var(--text-muted, #666); margin-top: 2px; display: none;"></div>
                 <button class="modal-close">×</button>
             </div>
             <div class="modal-body">
@@ -491,6 +494,195 @@
     <script src="../../js/patient-dashboard.js"></script>
     <script src="../../js/appointment.js"></script>
     <script src="../../js/loader/patient-dashboard-loader.js"></script>
+
+</body>
+
+</html>
+<div id="appointmentsPatientsPagination" style="margin-top: 1rem; text-align: center;">
+    <!-- Pagination controls populated by JS -->
+</div>
+</div>
+
+<!-- Patient Record Export Section (Hidden by default) -->
+<div id="patientRecordExportSection" style="display: none;">
+    <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h3>Patient Record Export</h3>
+                <p>Search a patient using <strong>Patient ID, Phone Number, or Name</strong>. All
+                    treatments, prescriptions, billing and doctors involved will be shown.</p>
+            </div>
+            <button class="btn btn-secondary" onclick="closeAdvancedSearch()">Back to Directory</button>
+        </div>
+
+        <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
+            <input type="text" id="patientSearchInput" class="form-control"
+                placeholder="Enter Patient ID / Phone / Name" style="width:250px">
+            <button class="btn btn-primary" onclick="searchPatientRecord()">Search</button>
+            <button class="btn btn-secondary" onclick="downloadPatientRecord()">Download Record</button>
+        </div>
+    </div>
+
+    <!-- PATIENT INFO -->
+    <div class="card" style="margin-top: 15px;">
+        <h3>Patient Information</h3>
+        <table class="table" style="width: 100%;">
+            <tbody id="patientInfoTable">
+                <tr>
+                    <td colspan="2" style="text-align:center">No patient selected</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- TREATMENTS -->
+    <div class="card" style="margin-top: 15px;">
+        <h3>Treatments & Doctors</h3>
+        <table class="table" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Doctor</th>
+                    <th>Treatment</th>
+                    <th>Cost</th>
+                </tr>
+            </thead>
+            <tbody id="treatmentTable"></tbody>
+        </table>
+    </div>
+
+    <!-- PRESCRIPTIONS -->
+    <div class="card" style="margin-top: 15px;">
+        <h3>Prescriptions</h3>
+        <table class="table" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Doctor</th>
+                    <th>Medicines</th>
+                </tr>
+            </thead>
+            <tbody id="prescriptionTable"></tbody>
+        </table>
+    </div>
+
+    <!-- BILLING -->
+    <div class="card" style="margin-top: 15px;">
+        <h3>Billing Summary</h3>
+        <table class="table" style="width: 100%;">
+            <tr>
+                <td>Total Treatment Cost</td>
+                <td id="totalAmount">0</td>
+            </tr>
+            <tr>
+                <td>Total Paid</td>
+                <td id="paidAmount">0</td>
+            </tr>
+            <tr>
+                <td>Credits</td>
+                <td id="creditAmount">0</td>
+            </tr>
+            <tr>
+                <td>Balance Due</td>
+                <td id="balanceAmount">0</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</section>
+</main>
+</div>
+
+<!-- Add/Edit Patient Modal -->
+<div id="addPatientModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title" id="patientModalTitle">Add New Patient</h3>
+            <div id="patientModalSubtitle"
+                style="font-size: 0.85rem; color: var(--text-muted, #666); margin-top: 2px; display: none;"></div>
+            <button class="modal-close">×</button>
+        </div>
+        <div class="modal-body">
+            <form id="patientForm">
+                <input type="hidden" id="editPatientId">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">First Name *</label>
+                        <input type="text" id="p_firstName" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Last Name *</label>
+                        <input type="text" id="p_lastName" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Date of Birth</label>
+                        <input type="date" id="p_dob" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Age</label>
+                        <input type="number" id="p_age" class="form-control" placeholder="Age in years">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Gender</label>
+                        <select id="p_gender" class="form-control">
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Phone *</label>
+                        <input type="text" id="p_phone" class="form-control" placeholder="03xx-xxxxxxx">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" id="p_email" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">City</label>
+                        <input type="text" id="p_city" class="form-control"
+                            placeholder="e.g. Lahore, Sahiwal, Faislabad">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Assigned Doctor</label>
+                        <select id="p_assignedDoctor" class="form-control">
+                            <option value="">Select Doctor</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Registration Date *</label>
+                        <input type="date" id="p_registrationDate" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Address</label>
+                    <textarea id="p_address" class="form-control" rows="2"></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary modal-close-btn" onclick="Modal.close('addPatientModal')">Cancel</button>
+            <button class="btn btn-primary" onclick="savePatient()">Save Patient</button>
+        </div>
+    </div>
+</div>
+
+<script src="../../js/core.js"></script>
+<script src="../../js/city-manager.js"></script>
+<script src="../../js/patient-dashboard.js"></script>
+<script src="../../js/appointment.js"></script>
+<script src="../../js/loader/patient-dashboard-loader.js"></script>
 
 </body>
 

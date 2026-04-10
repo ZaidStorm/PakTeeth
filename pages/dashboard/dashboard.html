@@ -188,12 +188,14 @@
                                 <h2 id="calendarTitle" style="margin: 0; font-size: 1.25rem;">Loading...</h2>
                             </div>
                             <button id="nextBtn" style="margin-right: 15px;">&#10095;</button>
-                            
+
                             <div style="display: flex; gap: 10px; align-items: center;">
-                                <select id="calendarDoctorSelect" class="form-control" style="width: auto; display: none; padding: 4px 8px; font-size: 0.85rem; border-radius: 8px;">
+                                <select id="calendarDoctorSelect" class="form-control"
+                                    style="width: auto; display: none; padding: 4px 8px; font-size: 0.85rem; border-radius: 8px;">
                                     <option value="">Select Doctor</option>
                                 </select>
-                                <select id="viewSelect" class="form-control" style="width: auto; padding: 4px 8px; font-size: 0.85rem; border-radius: 8px;">
+                                <select id="viewSelect" class="form-control"
+                                    style="width: auto; padding: 4px 8px; font-size: 0.85rem; border-radius: 8px;">
                                     <option value="day" selected>Day View</option>
                                     <option value="week">Week View</option>
                                     <option value="month">Month View</option>
@@ -245,13 +247,15 @@
                                 size="5" onchange="onPatientSelected()">
                                 <option value=""></option>
                             </select>
-                            <div id="apptPatientCount" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;"></div>
+                            <div id="apptPatientCount"
+                                style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;"></div>
                         </div>
                         <div id="apptPatientConfirm"
                             style="display:none; background: #f0f8ff; border: 1px solid #2a9df4; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px;">
                             <div style="display:flex; justify-content:space-between; align-items:center;">
                                 <div>
-                                    <div style="font-size:0.8rem; color:#2a9df4; font-weight:600; margin-bottom:4px;">✓ Selected Patient</div>
+                                    <div style="font-size:0.8rem; color:#2a9df4; font-weight:600; margin-bottom:4px;">✓
+                                        Selected Patient</div>
                                     <div id="apptPatientConfirmName" style="font-weight:bold; font-size:1rem;"></div>
                                 </div>
                                 <button type="button" onclick="clearPatientSelection()"
@@ -397,6 +401,7 @@
     <script src="../../js/doctors.js"></script>
     <script src="../../js/dashboard.js"></script>
     <script src="../../js/calender.js"></script>
+    <script src="../../js/city-manager.js"></script>
     <script src="../../js/loader/dashboard-loader.js"></script>
 </body>
 

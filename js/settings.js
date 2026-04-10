@@ -120,6 +120,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (document.getElementById("doctorHoursList")) {
         loadDoctorHours();
     }
+
+    if (document.getElementById("citiesTableBody")) {
+        loadCitiesList();
+    }
 });
 
 /* =====================================================
@@ -222,3 +226,145 @@ window.saveDoctorHour = async function (docId, docName) {
     }
 };
 
+/* =====================================================
+   LOCATION (CITY) MANAGEMENT
+==================================================== */
+let allCities = [];
+
+async function loadCitiesList() {
+    const tableBody = document.getElementById("citiesTableBody");
+    const countInfo = document.getElementById("cityCountInfo");
+    if (!tableBody) return;
+
+    tableBody.innerHTML = "<tr><td colspan='3' style='text-align:center;'>Loading cities...</td></tr>";
+
+    try {
+        const res = await fetch("http://localhost:3000/cities");
+        if (!res.ok) throw new Error("Failed to load cities");
+        allCities = await res.json();
+        renderCitiesTable(allCities);
+    } catch (err) {
+        console.error("Error loading cities:", err);
+        tableBody.innerHTML = "<tr><td colspan='3' style='text-align:center; color:red;'>Error loading cities.</td></tr>";
+    }
+}
+
+function renderCitiesTable(cities) {
+    const tableBody = document.getElementById("citiesTableBody");
+    const countInfo = document.getElementById("cityCountInfo");
+    if (!tableBody) return;
+
+    if (cities.length === 0) {
+        tableBody.innerHTML = "<tr><td colspan='3' style='text-align:center;'>No cities found.</td></tr>";
+        countInfo.textContent = "Showing 0 cities";
+        return;
+    }
+
+    tableBody.innerHTML = cities.map(city => `
+        <tr id="city_row_${city._id}">
+            <td><input type="text" id="city_name_${city._id}" class="form-control-plain" value="${city.name}" onchange="updateCityInline('${city._id}')" style="background:transparent; border:none; width:100%; padding:4px;"></td>
+            <td><input type="text" id="city_prov_${city._id}" class="form-control-plain" value="${city.province || ''}" onchange="updateCityInline('${city._id}')" style="background:transparent; border:none; width:100%; padding:4px; opacity:0.8;"></td>
+            <td style="text-align: right;">
+                <button class="btn btn-danger btn-sm" onclick="deleteCity('${city._id}')" title="Delete City" style="padding: 4px 8px; font-size: 10px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M3 6h18m-2 0v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6m3 0V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+                </button>
+            </td>
+        </tr>
+    `).join("");
+
+    countInfo.textContent = `Showing ${cities.length} cities`;
+}
+
+window.addNewCity = async function () {
+    const nameEl = document.getElementById("newCityName");
+    const provEl = document.getElementById("newCityProvince");
+    const name = nameEl.value.trim();
+    const province = provEl.value.trim();
+
+    if (!name) {
+        alert("Please enter a city name.");
+        return;
+    }
+
+    try {
+        const res = await fetch("http://localhost:3000/cities", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, province })
+        });
+
+        if (!res.ok) {
+            const errData = await res.json();
+            throw new Error(errData.message || "Failed to add city");
+        }
+
+        nameEl.value = "";
+        provEl.value = "";
+        await loadCitiesList();
+        // Notify other components to refresh datalists
+        if (window.CityManager) window.CityManager.refresh();
+        document.dispatchEvent(new CustomEvent('cityCollectionUpdated'));
+    } catch (err) {
+        console.error("Error adding city:", err);
+        alert(err.message);
+    }
+};
+
+window.updateCityInline = async function (id) {
+    const name = document.getElementById(`city_name_${id}`).value.trim();
+    const province = document.getElementById(`city_prov_${id}`).value.trim();
+
+    if (!name) {
+        alert("City name cannot be empty.");
+        loadCitiesList(); // Revert
+        return;
+    }
+
+    try {
+        const res = await fetch(`http://localhost:3000/cities/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, province })
+        });
+        if (!res.ok) throw new Error("Failed to update city");
+
+        console.log(`City ${id} updated.`);
+        if (window.CityManager) window.CityManager.refresh();
+        document.dispatchEvent(new CustomEvent('cityCollectionUpdated'));
+    } catch (err) {
+        console.error("Error updating city:", err);
+        alert("Failed to update city.");
+        loadCitiesList(); // Revert
+    }
+};
+
+window.deleteCity = async function (id) {
+    if (!confirm("Are you sure you want to delete this city? This will not affect existing patient records but will remove it from dynamic suggestions.")) return;
+
+    try {
+        const res = await fetch(`http://localhost:3000/cities/${id}`, {
+            method: "DELETE"
+        });
+        if (!res.ok) throw new Error("Failed to delete city");
+
+        await loadCitiesList();
+        if (window.CityManager) window.CityManager.refresh();
+        document.dispatchEvent(new CustomEvent('cityCollectionUpdated'));
+    } catch (err) {
+        console.error("Error deleting city:", err);
+        alert("Failed to delete city.");
+    }
+};
+
+window.filterCitiesTable = function () {
+    const query = document.getElementById("cityListSearch").value.toLowerCase();
+    if (!query) {
+        renderCitiesTable(allCities);
+        return;
+    }
+    const filtered = allCities.filter(c =>
+        (c.name && c.name.toLowerCase().includes(query)) ||
+        (c.province && c.province.toLowerCase().includes(query))
+    );
+    renderCitiesTable(filtered);
+};

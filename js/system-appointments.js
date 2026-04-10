@@ -365,14 +365,14 @@ if (!window.filterPatientDropdown) {
         select.innerHTML = '<option value="">Select Patient</option>';
 
         const matches = term
-                ? patients.filter(p => {
-                    const fullName = `${p.firstName || ''} ${p.lastName || ''}`.toLowerCase();
-                    const pid = (p.patientId || '').toLowerCase();
-                    const phone = (p.phone || '').toLowerCase().replace(/[-\s]/g, '');
-                    const termClean = term.replace(/[-\s]/g, '');
-                    return fullName.includes(term) || pid.includes(term) || phone.includes(termClean);
-                })
-                : patients;
+            ? patients.filter(p => {
+                const fullName = `${p.firstName || ''} ${p.lastName || ''}`.toLowerCase();
+                const pid = (p.patientId || '').toLowerCase();
+                const phone = (p.phone || '').toLowerCase().replace(/[-\s]/g, '');
+                const termClean = term.replace(/[-\s]/g, '');
+                return fullName.includes(term) || pid.includes(term) || phone.includes(termClean);
+            })
+            : patients;
 
         matches.forEach(p => {
             const opt = document.createElement("option");
